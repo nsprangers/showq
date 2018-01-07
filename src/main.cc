@@ -33,12 +33,14 @@ Glib::KeyFile keyfile;
 
 Audio *audio;
 
+/* Gtk::AboutDialog automatically highlights strings starting with http as links
 static void on_activate_url_link(Gtk::AboutDialog &, const Glib::ustring &link)
 {
   std::string command = "xdg-open ";
   command += link;
   Glib::spawn_command_line_async(command);
 }
+*/
 
 int main(int argc, char *argv[])
 {
@@ -60,7 +62,7 @@ int main(int argc, char *argv[])
   Glib::RefPtr <Gtk::Builder> refXml;
 
   try {
-    audio = new Audio;
+    // audio = new Audio;
     refXml = Gtk::Builder::create_from_file(
       Glib::build_filename(showq_ui, "app.ui"));
     refXml->get_widget_derived("app", app);
@@ -75,7 +77,7 @@ int main(int argc, char *argv[])
         }
       } catch (...) {
       }
-      Gtk::AboutDialog::set_url_hook(sigc::ptr_fun(&on_activate_url_link));
+      // Gtk::AboutDialog::set_url_hook(sigc::ptr_fun(&on_activate_url_link));
       kit.run(*app);
     } else {
       Gtk::MessageDialog d(_("Show Q could not find `app` in app.ui XML file."), false, Gtk::MESSAGE_ERROR);

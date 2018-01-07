@@ -278,7 +278,9 @@
           <object class="GtkHScale" id="ed_wave_slide">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <!-- This is deprecated with no replacement in 3.0
             <property name="update_policy">discontinuous</property>
+            -->
             <property name="adjustment">adjustment2</property>
             <property name="value_pos">left</property>
           </object>

@@ -220,8 +220,9 @@ App::App(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &refXml)
   connect_menu_item(m_refXml, "m_about", sigc::mem_fun(*this, &App::on_about_activate));
 
 
-  recent_filter.add_application(Glib::get_prgname());
-  recent_menu_item.add_filter(recent_filter);
+  ref_recent_filter = Gtk::RecentFilter::create();
+  ref_recent_filter->add_application(Glib::get_prgname());
+  recent_menu_item.add_filter(ref_recent_filter);
   recent_menu_item.signal_item_activated().connect(sigc::mem_fun(*this, &App::on_recent_activate));
   Gtk::MenuItem *recent_parent_menu_item;
   m_refXml->get_widget("m_recent", recent_parent_menu_item);
@@ -335,12 +336,14 @@ App::App(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &refXml)
   m_treeview->signal_stop().connect(sigc::mem_fun(*this, &App::on_stop));
   m_treeview->signal_sneak_out().connect(sigc::mem_fun(*this, &App::on_sneak_out));
 
-  Pix_play = render_icon(Gtk::Stock::MEDIA_PLAY,
-                         Gtk::IconSize(Gtk::ICON_SIZE_MENU));
-  Pix_pause = render_icon(Gtk::Stock::MEDIA_PAUSE,
-                          Gtk::IconSize(Gtk::ICON_SIZE_MENU));
-  Pix_PBpos = render_icon(Gtk::Stock::YES,
-                          Gtk::IconSize(Gtk::ICON_SIZE_MENU));
+  // 3.0 Gtk::StyleContext::render_icon deprecated, using Gtk::IconTheme::load_icon
+  //Pix_play = Gtk::IconTheme::load_icon("media-playback-play",
+  //                       Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
+  //Pix_pause = Gtk::IconTheme::load_icon("media-playback-pause",
+  //                        Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
+  // 3.0 I don't know what this icon is supposed to look like or how it's used
+  // Pix_PBpos = Gtk::IconTheme::load_icon(Gtk::Stock::YES,
+  //                        Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
 
   // Set up MIDI output
   int result = snd_seq_open(&oseq, "default", SND_SEQ_OPEN_DUPLEX, 0);
@@ -728,16 +731,17 @@ void App::on_lock_activate()
   Glib::RefPtr<Gtk::ToggleAction> p =
     Glib::RefPtr<Gtk::ToggleAction>::cast_static(m_refXml->get_object("m_lock"));
 
+  // 3.0 Gtk::CellLayout::get_first_cell_renderer deprecated, use get_first_cell
   if (p->get_active()) {
     m_treeview->set_reorderable(false);
-    (mCols[1])->get_first_cell_renderer()->property_mode() = Gtk::CELL_RENDERER_MODE_INERT;
-    (mCols[2])->get_first_cell_renderer()->property_mode() = Gtk::CELL_RENDERER_MODE_INERT;
-    (mCols[6])->get_first_cell_renderer()->property_mode() = Gtk::CELL_RENDERER_MODE_INERT;
+    (mCols[1])->get_first_cell()->property_mode() = Gtk::CELL_RENDERER_MODE_INERT;
+    (mCols[2])->get_first_cell()->property_mode() = Gtk::CELL_RENDERER_MODE_INERT;
+    (mCols[6])->get_first_cell()->property_mode() = Gtk::CELL_RENDERER_MODE_INERT;
   } else {
     m_treeview->set_reorderable();
-    (mCols[1])->get_first_cell_renderer()->property_mode() = Gtk::CELL_RENDERER_MODE_EDITABLE;
-    (mCols[2])->get_first_cell_renderer()->property_mode() = Gtk::CELL_RENDERER_MODE_EDITABLE;
-    (mCols[6])->get_first_cell_renderer()->property_mode() = Gtk::CELL_RENDERER_MODE_ACTIVATABLE;
+    (mCols[1])->get_first_cell()->property_mode() = Gtk::CELL_RENDERER_MODE_EDITABLE;
+    (mCols[2])->get_first_cell()->property_mode() = Gtk::CELL_RENDERER_MODE_EDITABLE;
+    (mCols[6])->get_first_cell()->property_mode() = Gtk::CELL_RENDERER_MODE_ACTIVATABLE;
   }
 }
 
@@ -910,7 +914,8 @@ void App::on_go_activate()
   if (iter) ++iter;
   if (!iter) {
     Gtk::TreeModel::Path p = Gtk::TreeModel::Path(siter);
-    if (p.get_depth() > 1 && p.up()) {
+    // 3.0 get_depth replaced by size()
+    if (p.size() > 1 && p.up()) {
       iter = m_refTreeModel->get_iter(p);
       ++iter;
     }
@@ -1299,11 +1304,11 @@ CueTreeView::CueTreeView(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builde
   ->signal_activate().connect(sigc::mem_fun(*this, &CueTreeView::on_sneak_out));
 
   //Targets:
-  std::list<Gtk::TargetEntry> listTargets;
+  std::vector<Gtk::TargetEntry> listTargets;
   listTargets.push_back(Gtk::TargetEntry("text/uri-list"));
   listTargets.push_back(Gtk::TargetEntry("GTK_TREE_MODEL_ROW"));
 
-  enable_model_drag_dest(listTargets);
+  enable_model_drag_dest(listTargets, Gdk::ACTION_COPY);
 }
 
 CueTreeView::~CueTreeView()
@@ -1334,7 +1339,8 @@ void CueTreeView::on_drag_data_received(
 {
   TreeView::on_drag_data_received(context, x, y, selection_data, info, time);
 
-  std::vector<std::string> uris = selection_data.get_uris();
+  // 3.0 Gtk::SelectionData::get_uris() returns ustring vector
+  std::vector<Glib::ustring> uris = selection_data.get_uris();
 
   if (uris.empty()) return;
 
