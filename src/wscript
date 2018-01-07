@@ -10,7 +10,7 @@ def configure(conf):
     conf.load('compiler_cxx')
 
     conf.check_cfg(atleast_pkgconfig_version='0.0.0')
-    conf.check_cfg(package='gtkmm-2.4', args='--cflags --libs', uselib_store='GTKMM')
+    conf.check_cfg(package='gtkmm-3.0', args='--cflags --libs', uselib_store='GTKMM')
     conf.check_cfg(package='gthread-2.0', args='--cflags --libs', uselib_store='GTHREAD')
     conf.check_cfg(package='libxml++-2.6', args='--cflags --libs', uselib_store='XMLPP')
     conf.check_cfg(package='alsa', args='--cflags --libs', uselib_store='ALSA')

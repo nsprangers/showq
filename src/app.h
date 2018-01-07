@@ -327,7 +327,8 @@ private:
   Glib::RefPtr<Gdk::Pixbuf> Pix_pause;
   Glib::RefPtr<Gdk::Pixbuf> Pix_PBpos;
 
-  Gtk::RecentFilter recent_filter;
+  // 3.0 RecentFilter is private
+  Glib::RefPtr<Gtk::RecentFilter> ref_recent_filter;
   Gtk::RecentChooserMenu recent_menu_item;
 
   std::vector<Gtk::TreeViewColumn * > mCols;

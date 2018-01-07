@@ -274,7 +274,7 @@ bool EditCue::on_key_release_event(GdkEventKey *event)
     m_key_but->set_active(false);
     keyval = event->keyval;
     state = Gdk::ModifierType(event->state);
-    if (keyval == GDK_BackSpace) keyval = 0;
+    if (keyval == GDK_KEY_BackSpace) keyval = 0;
     if (keyval)
       m_key_but->set_label(Gtk::AccelGroup::name(keyval, state));
     else
