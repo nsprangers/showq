@@ -27,7 +27,7 @@
 #include "audio.h"
 #include "uuid_cpp.h"
 
-class Fader : public Gtk::VScale {
+class Fader : public Gtk::Scale {
 public:
   Fader(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &refXml);
   virtual ~Fader() {}
@@ -94,7 +94,7 @@ private:
 
   Gtk::FileChooserButton *m_wave_fentry;
   Gtk::SpinButton *m_wave_start;
-  Gtk::HScale *m_wave_tslide;
+  Gtk::Scale *m_wave_tslide;
 
   std::vector<Fader *> m_wave_faders;
   std::shared_ptr<AudioFile> m_af;
@@ -206,7 +206,7 @@ private:
   Gtk::Entry *m_info_cueid;
   Gtk::Entry *m_info_text;
   Gtk::SpinButton *m_info_wait;
-  Gtk::CheckButton *m_info_autocont;
+  Gtk::Switch *m_info_autocont;
   Gtk::TextView *m_info_note;
   Gtk::ToggleButton *m_key_but;
   Gtk::Entry *m_info_target;

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.24"/>
+  <requires lib="gtk+" version="3.0"/>
   <!-- interface-naming-policy toplevel-contextual -->
-  <object class="GtkVBox" id="edit_patch_vbox">
+  <object class="GtkBox" id="edit_patch_vbox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
     <child>
       <object class="GtkLabel" id="label77">
         <property name="visible">True</property>
@@ -18,9 +19,10 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHSeparator" id="hseparator8">
+      <object class="GtkSeparator" id="hseparator8">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">horizontal</property>
       </object>
       <packing>
         <property name="expand">False</property>

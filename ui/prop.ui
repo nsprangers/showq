@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.24"/>
+  <requires lib="gtk+" version="3.0"/>
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkDialog" id="Properties">
     <property name="visible">True</property>
@@ -8,14 +8,16 @@
     <property name="title" translatable="yes">Properties</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
+            <property name="orientation">horizontal</property>
             <child>
               <object class="GtkButton" id="button1">
                 <property name="label">gtk-apply</property>
@@ -69,14 +71,16 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox38">
+          <object class="GtkBox" id="vbox38">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkHBox" id="hbox20">
+              <object class="GtkBox" id="hbox20">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">horizontal</property>
                 <child>
                   <object class="GtkLabel" id="label131">
                     <property name="visible">True</property>
@@ -91,9 +95,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkVSeparator" id="vseparator7">
+                  <object class="GtkSeparator" id="vseparator7">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                  <property name="orientation">vertical</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -126,9 +131,10 @@
               </packing>
             </child>
             <child>
-              <object class="GtkHSeparator" id="hseparator12">
+              <object class="GtkSeparator" id="hseparator12">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+              <property name="orientation">horizontal</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -137,10 +143,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox39">
+              <object class="GtkBox" id="vbox39">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="label132">
                     <property name="visible">True</property>

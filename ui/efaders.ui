@@ -34,9 +34,10 @@
     <property name="upper">1</property>
     <property name="step_increment">0.0010000000475</property>
   </object>
-  <object class="GtkVBox" id="edit_faders_vbox">
+  <object class="GtkBox" id="edit_faders_vbox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
     <child>
       <object class="GtkLabel" id="label46">
         <property name="visible">True</property>
@@ -50,9 +51,10 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHSeparator" id="hseparator7">
+      <object class="GtkSeparator" id="hseparator7">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">horizontal</property>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -62,21 +64,24 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHBox" id="hbox15">
+      <object class="GtkBox" id="hbox15">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="homogeneous">True</property>
+        <property name="orientation">horizontal</property>
         <child>
-          <object class="GtkVBox" id="vbox22">
+          <object class="GtkBox" id="vbox22">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f1">
+              <object class="GtkScale" id="ed_wave_f1">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment1</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -109,16 +114,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox23">
+          <object class="GtkBox" id="vbox23">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f2">
+              <object class="GtkScale" id="ed_wave_f2">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment2</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -151,16 +158,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox24">
+          <object class="GtkBox" id="vbox24">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f3">
+              <object class="GtkScale" id="ed_wave_f3">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment3</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -193,16 +202,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox25">
+          <object class="GtkBox" id="vbox25">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f4">
+              <object class="GtkScale" id="ed_wave_f4">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment4</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -235,16 +246,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox26">
+          <object class="GtkBox" id="vbox26">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f5">
+              <object class="GtkScale" id="ed_wave_f5">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment5</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -277,16 +290,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox27">
+          <object class="GtkBox" id="vbox27">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f6">
+              <object class="GtkScale" id="ed_wave_f6">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment6</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -319,16 +334,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox28">
+          <object class="GtkBox" id="vbox28">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f7">
+              <object class="GtkScale" id="ed_wave_f7">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment7</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -361,16 +378,18 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox29">
+          <object class="GtkBox" id="vbox29">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkVScale" id="ed_wave_f8">
+              <object class="GtkScale" id="ed_wave_f8">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment8</property>
                 <property name="inverted">True</property>
                 <property name="digits">5</property>
+                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="expand">True</property>

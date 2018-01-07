@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkAdjustment" id="adjustment1">
     <property name="upper">10000</property>
     <property name="step_increment">0.10000000149</property>
@@ -13,190 +13,118 @@
     <property name="page_increment">1</property>
     <property name="page_size">1</property>
   </object>
-  <object class="GtkVBox" id="edit_wave_vbox">
+  <object class="GtkBox" id="edit_wave_vbox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
     <child>
-      <object class="GtkFrame" id="frame4">
+      <object class="GtkGrid" id="grid1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label_xalign">0</property>
+        <property name="margin_left">5</property>
+        <property name="margin_right">5</property>
+        <property name="margin_top">5</property>
+        <property name="margin_bottom">5</property>
+        <property name="row_spacing">5</property>
+        <property name="column_spacing">5</property>
         <child>
-          <object class="GtkAlignment" id="alignment5">
+          <object class="GtkLabel" id="label102">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="left_padding">12</property>
-            <child>
-              <object class="GtkTable" id="table10">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="n_rows">3</property>
-                <property name="n_columns">2</property>
-                <child>
-                  <object class="GtkLabel" id="label102">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="xalign">1</property>
-                    <property name="xpad">6</property>
-                    <property name="label" translatable="yes">File :</property>
-                  </object>
-                  <packing>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"/>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label103">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="xalign">1</property>
-                    <property name="xpad">6</property>
-                    <property name="label" translatable="yes">File type :</property>
-                  </object>
-                  <packing>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"/>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label104">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="xalign">1</property>
-                    <property name="xpad">6</property>
-                    <property name="label" translatable="yes">Length :</property>
-                  </object>
-                  <packing>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"/>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="ed_wave_ltype">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"/>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="ed_wave_llength">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"/>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkFileChooserButton" id="ed_wave_file">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="y_options">GTK_FILL</property>
-                  </packing>
-                </child>
-              </object>
-            </child>
+            <property name="label" translatable="yes">File :</property>
           </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
         </child>
-        <child type="label">
-          <object class="GtkLabel" id="label85">
+        <child>
+          <object class="GtkFileChooserButton" id="ed_wave_file">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="use_markup">True</property>
           </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label103">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">File type :</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="ed_wave_ltype">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label104">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Length :</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="ed_wave_llength">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label92">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="xpad">6</property>
+            <property name="label" translatable="yes">Start Time :</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="ed_wave_start">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="text" translatable="yes">0.000</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="adjustment">adjustment1</property>
+            <property name="climb_rate">1</property>
+            <property name="digits">3</property>
+            <property name="numeric">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
         </child>
       </object>
       <packing>
         <property name="expand">False</property>
-        <property name="fill">False</property>
+        <property name="fill">True</property>
         <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkFrame" id="frame5">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label_xalign">0</property>
-        <child>
-          <object class="GtkAlignment" id="alignment6">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="left_padding">12</property>
-            <child>
-              <object class="GtkTable" id="table8">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="n_columns">2</property>
-                <child>
-                  <object class="GtkLabel" id="label92">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="xalign">1</property>
-                    <property name="xpad">6</property>
-                    <property name="label" translatable="yes">Start Time :</property>
-                  </object>
-                  <packing>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"/>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSpinButton" id="ed_wave_start">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="primary_icon_activatable">False</property>
-                    <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <property name="adjustment">adjustment1</property>
-                    <property name="climb_rate">1</property>
-                    <property name="digits">3</property>
-                    <property name="numeric">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="y_options"/>
-                  </packing>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child type="label">
-          <object class="GtkLabel" id="label86">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="use_markup">True</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">False</property>
-        <property name="position">1</property>
       </packing>
     </child>
     <child>
@@ -248,7 +176,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHBox" id="hbox21">
+      <object class="GtkBox" id="hbox21">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
@@ -264,9 +192,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVSeparator" id="vseparator8">
+          <object class="GtkSeparator" id="vseparator8">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -275,12 +204,9 @@
           </packing>
         </child>
         <child>
-          <object class="GtkHScale" id="ed_wave_slide">
+          <object class="GtkScale" id="ed_wave_slide">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <!-- This is deprecated with no replacement in 3.0
-            <property name="update_policy">discontinuous</property>
-            -->
             <property name="adjustment">adjustment2</property>
             <property name="value_pos">left</property>
           </object>

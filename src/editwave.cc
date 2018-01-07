@@ -30,7 +30,7 @@
 // Fader
 
 Fader::Fader(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &refXml)
-  : Gtk::VScale(cobject)
+  : Gtk::Scale(cobject)
 {
 }
 

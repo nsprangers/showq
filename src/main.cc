@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
   Glib::RefPtr <Gtk::Builder> refXml;
 
   try {
-    // audio = new Audio;
+    audio = new Audio;
     refXml = Gtk::Builder::create_from_file(
       Glib::build_filename(showq_ui, "app.ui"));
     refXml->get_widget_derived("app", app);
@@ -104,7 +104,8 @@ int main(int argc, char *argv[])
   {
     // Jack2 can throw errors, which we don't want to show the
     // catch all handler for
-  }*/
+  }
+  */
   catch (...) {
     Gtk::MessageDialog d(_("Show Q encountered an unknown-error."), false, Gtk::MESSAGE_ERROR);
     d.set_secondary_text(_("Please report this error to the developers of the program."));

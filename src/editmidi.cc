@@ -170,7 +170,7 @@ EditCueMidi::EditCueMidi(Gtk::Notebook *p)
 
   on_selection_change();
 
-  Gtk::VBox *vbox;
+  Gtk::Box *vbox;
   m_refXml->get_widget("edit_midi_vbox", vbox);
   p->append_page(*vbox, "MIDI");
 

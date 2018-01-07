@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkAdjustment" id="adjustment1">
     <property name="lower">1</property>
     <property name="upper">16</property>
@@ -395,28 +395,33 @@
       </row>
     </data>
   </object>
-  <object class="GtkVBox" id="edit_midi_vbox">
+  <object class="GtkBox" id="edit_midi_vbox">
     <property name="width_request">518</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
     <child>
-      <object class="GtkHBox">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_left">5</property>
+        <property name="margin_top">5</property>
+        <property name="margin_bottom">5</property>
         <child>
-          <object class="GtkVBox" id="vbox40">
+          <object class="GtkBox" id="vbox40">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkHBox" id="hbox22">
+              <object class="GtkBox" id="hbox22">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
                   <object class="GtkLabel" id="label139">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">MIDI function : </property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -428,6 +433,7 @@
                   <object class="GtkComboBox" id="ed_midi_func">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">False</property>
                     <property name="model">model1</property>
                     <child>
                       <object class="GtkCellRendererText" id="renderer1"/>
@@ -450,7 +456,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox23">
+              <object class="GtkBox" id="hbox23">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
@@ -469,6 +475,7 @@
                   <object class="GtkComboBox" id="ed_midi_patch">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">False</property>
                     <property name="model">model2</property>
                     <child>
                       <object class="GtkCellRendererText" id="renderer2"/>
@@ -494,23 +501,40 @@
               <object class="GtkNotebook" id="ed_midi_pad1">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">False</property>
                 <property name="show_border">False</property>
                 <child>
-                  <object class="GtkTable" id="table14">
+                  <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="n_rows">3</property>
-                    <property name="n_columns">2</property>
                     <child>
                       <object class="GtkLabel" id="label136">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
                         <property name="label" translatable="yes">MIDI channel : </property>
+                        <property name="xalign">0</property>
                       </object>
                       <packing>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options"/>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="ed_midi_channel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">False</property>
+                        <property name="text" translatable="yes">1</property>
+                        <property name="primary_icon_activatable">False</property>
+                        <property name="secondary_icon_activatable">False</property>
+                        <property name="adjustment">adjustment1</property>
+                        <property name="climb_rate">1</property>
+                        <property name="numeric">True</property>
+                        <property name="value">1</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
@@ -520,10 +544,25 @@
                         <property name="xalign">0</property>
                       </object>
                       <packing>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
-                        <property name="bottom_attach">2</property>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options"/>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="ed_midi_data1">
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">False</property>
+                        <property name="text" translatable="yes">1</property>
+                        <property name="primary_icon_activatable">False</property>
+                        <property name="secondary_icon_activatable">False</property>
+                        <property name="adjustment">adjustment2</property>
+                        <property name="climb_rate">1</property>
+                        <property name="numeric">True</property>
+                        <property name="value">1</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -533,67 +572,32 @@
                         <property name="xalign">0</property>
                       </object>
                       <packing>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">2</property>
-                        <property name="bottom_attach">3</property>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options"/>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton" id="ed_midi_channel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="primary_icon_activatable">False</property>
-                        <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
-                        <property name="adjustment">adjustment1</property>
-                        <property name="climb_rate">1</property>
-                        <property name="numeric">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
-                        <property name="y_options"/>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton" id="ed_midi_data1">
-                        <property name="can_focus">True</property>
-                        <property name="primary_icon_activatable">False</property>
-                        <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
-                        <property name="adjustment">adjustment2</property>
-                        <property name="climb_rate">1</property>
-                        <property name="numeric">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
-                        <property name="top_attach">1</property>
-                        <property name="bottom_attach">2</property>
-                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkSpinButton" id="ed_midi_data2">
                         <property name="can_focus">True</property>
+                        <property name="hexpand">False</property>
+                        <property name="text" translatable="yes">1</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                         <property name="adjustment">adjustment3</property>
                         <property name="climb_rate">1</property>
                         <property name="numeric">True</property>
+                        <property name="value">1</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
                         <property name="top_attach">2</property>
-                        <property name="bottom_attach">3</property>
-                        <property name="y_options"/>
                       </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                 </child>
@@ -608,9 +612,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkVBox" id="vbox41">
+                  <object class="GtkBox" id="vbox41">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkFrame" id="frame6">
                         <property name="visible">True</property>
@@ -652,7 +657,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkHBox" id="hbox24">
+                      <object class="GtkBox" id="hbox24">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
@@ -672,8 +677,6 @@
                                     <property name="can_focus">True</property>
                                     <property name="primary_icon_activatable">False</property>
                                     <property name="secondary_icon_activatable">False</property>
-                                    <property name="primary_icon_sensitive">True</property>
-                                    <property name="secondary_icon_sensitive">True</property>
                                     <property name="adjustment">adjustment4</property>
                                     <property name="climb_rate">1</property>
                                     <property name="numeric">True</property>
@@ -764,9 +767,10 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkVBox" id="vbox44">
+                          <object class="GtkBox" id="vbox44">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkFrame" id="ed_midi_msc_nframe">
                                 <property name="visible">True</property>
@@ -784,8 +788,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                       </object>
                                     </child>
                                   </object>
@@ -821,8 +823,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                       </object>
                                     </child>
                                   </object>
@@ -858,8 +858,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                       </object>
                                     </child>
                                   </object>
@@ -895,11 +893,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkVBox" id="vbox43">
+                          <object class="GtkBox" id="vbox43">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkHBox" id="hbox25">
+                              <object class="GtkBox" id="hbox25">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="homogeneous">True</property>
@@ -921,8 +920,6 @@
                                     <property name="can_focus">True</property>
                                     <property name="primary_icon_activatable">False</property>
                                     <property name="secondary_icon_activatable">False</property>
-                                    <property name="primary_icon_sensitive">True</property>
-                                    <property name="secondary_icon_sensitive">True</property>
                                     <property name="adjustment">adjustment5</property>
                                     <property name="climb_rate">1</property>
                                     <property name="numeric">True</property>
@@ -957,11 +954,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkVBox" id="vbox46">
+                          <object class="GtkBox" id="vbox46">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkHBox" id="hbox29">
+                              <object class="GtkBox" id="hbox29">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="homogeneous">True</property>
@@ -983,8 +981,6 @@
                                     <property name="can_focus">True</property>
                                     <property name="primary_icon_activatable">False</property>
                                     <property name="secondary_icon_activatable">False</property>
-                                    <property name="primary_icon_sensitive">True</property>
-                                    <property name="secondary_icon_sensitive">True</property>
                                     <property name="adjustment">adjustment6</property>
                                     <property name="climb_rate">1</property>
                                     <property name="numeric">True</property>
@@ -1003,7 +999,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHBox" id="hbox30">
+                              <object class="GtkBox" id="hbox30">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="homogeneous">True</property>
@@ -1025,8 +1021,6 @@
                                     <property name="can_focus">True</property>
                                     <property name="primary_icon_activatable">False</property>
                                     <property name="secondary_icon_activatable">False</property>
-                                    <property name="primary_icon_sensitive">True</property>
-                                    <property name="secondary_icon_sensitive">True</property>
                                     <property name="adjustment">adjustment7</property>
                                     <property name="climb_rate">1</property>
                                     <property name="numeric">True</property>
@@ -1078,9 +1072,10 @@
                             <property name="can_focus">False</property>
                             <property name="left_padding">12</property>
                             <child>
-                              <object class="GtkVBox" id="vbox45">
+                              <object class="GtkBox" id="vbox45">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="orientation">vertical</property>
                                 <child>
                                   <object class="GtkTable" id="table16">
                                     <property name="visible">True</property>
@@ -1093,8 +1088,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                         <property name="adjustment">adjustment8</property>
                                         <property name="climb_rate">1</property>
                                         <property name="numeric">True</property>
@@ -1111,8 +1104,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                         <property name="adjustment">adjustment9</property>
                                         <property name="climb_rate">1</property>
                                         <property name="numeric">True</property>
@@ -1131,8 +1122,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                         <property name="adjustment">adjustment10</property>
                                         <property name="climb_rate">1</property>
                                         <property name="numeric">True</property>
@@ -1151,8 +1140,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                         <property name="adjustment">adjustment11</property>
                                         <property name="climb_rate">1</property>
                                         <property name="numeric">True</property>
@@ -1171,8 +1158,6 @@
                                         <property name="can_focus">True</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                         <property name="adjustment">adjustment12</property>
                                         <property name="climb_rate">1</property>
                                         <property name="numeric">True</property>
@@ -1189,8 +1174,8 @@
                                       <object class="GtkLabel" id="label154">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Minute</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">1</property>
@@ -1203,8 +1188,8 @@
                                       <object class="GtkLabel" id="label155">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Hour</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="x_options">GTK_FILL</property>
@@ -1215,8 +1200,8 @@
                                       <object class="GtkLabel" id="label156">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Second</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">2</property>
@@ -1229,8 +1214,8 @@
                                       <object class="GtkLabel" id="label157">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Frame</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">3</property>
@@ -1243,8 +1228,8 @@
                                       <object class="GtkLabel" id="label158">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Sub Frame</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">4</property>
@@ -1399,9 +1384,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkVBox" id="vbox1">
+                  <object class="GtkBox" id="vbox1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
                     <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel" id="label2">
@@ -1422,8 +1408,6 @@
                         <property name="can_focus">True</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -1462,27 +1446,26 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVSeparator" id="vseparator6">
+          <object class="GtkSeparator">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="padding">4</property>
             <property name="position">1</property>
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox47">
+          <object class="GtkBox" id="vbox47">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
               <object class="GtkScrolledWindow" id="scrolledwindow6">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="ed_midi_tree">
@@ -1491,6 +1474,9 @@
                     <property name="headers_visible">False</property>
                     <property name="reorderable">True</property>
                     <property name="enable_search">False</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection"/>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -1515,7 +1501,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHSeparator" id="hseparator13">
+      <object class="GtkSeparator">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
       </object>
@@ -1526,7 +1512,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHButtonBox" id="hbuttonbox13">
+      <object class="GtkButtonBox" id="hbuttonbox13">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">6</property>
@@ -1574,7 +1560,7 @@
                 <property name="xscale">0</property>
                 <property name="yscale">0</property>
                 <child>
-                  <object class="GtkHBox" id="hbox31">
+                  <object class="GtkBox" id="hbox31">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="spacing">2</property>
