@@ -401,7 +401,11 @@
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
     <child>
+<<<<<<< HEAD:ui/editmidi.ui
       <object class="GtkBox">
+=======
+      <object class="GtkHBox" id="hbox900">
+>>>>>>> master:src/ui/editmidi.ui
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_left">5</property>
@@ -1609,3 +1613,4 @@
     </child>
   </object>
 </interface>
+
