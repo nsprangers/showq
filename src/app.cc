@@ -339,14 +339,13 @@ App::App(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &refXml)
   m_treeview->signal_stop().connect(sigc::mem_fun(*this, &App::on_stop));
   m_treeview->signal_sneak_out().connect(sigc::mem_fun(*this, &App::on_sneak_out));
 
-  // 3.0 Gtk::StyleContext::render_icon deprecated, using Gtk::IconTheme::load_icon
-  //Pix_play = Gtk::IconTheme::load_icon("media-playback-play",
-  //                       Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
-  //Pix_pause = Gtk::IconTheme::load_icon("media-playback-pause",
-  //                        Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
-  // 3.0 I don't know what this icon is supposed to look like or how it's used
-  // Pix_PBpos = Gtk::IconTheme::load_icon(Gtk::Stock::YES,
-  //                        Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
+  auto ico_theme = Gtk::IconTheme::get_default();
+  Pix_play = ico_theme->load_icon("media-playback-start",
+                         Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
+  Pix_pause = ico_theme->load_icon("media-playback-pause",
+                          Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
+  Pix_PBpos = ico_theme->load_icon("media-skip-forward",
+                          Gtk::IconSize(Gtk::ICON_SIZE_MENU), Gtk::ICON_LOOKUP_USE_BUILTIN);
 
   // Set up MIDI output
   int result = snd_seq_open(&oseq, "default", SND_SEQ_OPEN_DUPLEX, 0);
@@ -1293,21 +1292,29 @@ CueTreeView::CueTreeView(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builde
   : Gtk::TreeView(cobject), m_refXml(refXml)
 {
   set_column_drag_function(sigc::mem_fun(*this, &CueTreeView::on_col_drag));
-  gsize r_size;
+
+  auto refActionGroup = Gio::SimpleActionGroup::create();
+
+  refActionGroup->add_action("edit",
+      sigc::mem_fun(*this, &CueTreeView::on_edit));
+  refActionGroup->add_action("stop",
+      sigc::mem_fun(*this, &CueTreeView::on_stop));
+  refActionGroup->add_action("pause",
+      sigc::mem_fun(*this, &CueTreeView::on_pause));
+  refActionGroup->add_action("sneak_out",
+      sigc::mem_fun(*this, &CueTreeView::on_sneak_out));
+
+  insert_action_group("menupopup", refActionGroup);
+
   auto refPopupXml = Gtk::Builder::create();
+  gsize r_size;
   refPopupXml->add_from_string(
       (const char *) Gio::Resource::lookup_data_global("/org/evandel/showq/ui/popupmenu.ui")->get_data(r_size)
       , -1);
-  refPopupXml->get_widget("PopupMenu", m_MenuPopup);
 
-  Glib::RefPtr<Gtk::Action>::cast_static(refPopupXml->get_object("menuitem1"))
-  ->signal_activate().connect(sigc::mem_fun(*this, &CueTreeView::on_edit));
-  Glib::RefPtr<Gtk::Action>::cast_static(refPopupXml->get_object("menuitem2"))
-  ->signal_activate().connect(sigc::mem_fun(*this, &CueTreeView::on_stop));
-  Glib::RefPtr<Gtk::Action>::cast_static(refPopupXml->get_object("menuitem3"))
-  ->signal_activate().connect(sigc::mem_fun(*this, &CueTreeView::on_pause));
-  Glib::RefPtr<Gtk::Action>::cast_static(refPopupXml->get_object("menuitem4"))
-  ->signal_activate().connect(sigc::mem_fun(*this, &CueTreeView::on_sneak_out));
+  Glib::RefPtr<Glib::Object> obj = refPopupXml->get_object("MenuPopup");
+  Glib::RefPtr<Gio::Menu> gmenu = Glib::RefPtr<Gio::Menu>::cast_dynamic(obj);
+  m_MenuPopup = new Gtk::Menu(gmenu);
 
   //Targets:
   std::vector<Gtk::TargetEntry> listTargets;
@@ -1331,6 +1338,9 @@ bool CueTreeView::on_button_press_event(GdkEventButton *event)
 
   //Then do our custom stuff:
   if ((event->type == GDK_BUTTON_PRESS) && (event->button == 3)) {
+    if (!m_MenuPopup->get_attach_widget())
+      m_MenuPopup->attach_to_widget(*this);
+
     Gtk::TreeModel::iterator iter = get_selection()->get_selected();
     if (iter) m_MenuPopup->popup(event->button, event->time);
   }
@@ -1345,10 +1355,6 @@ void CueTreeView::on_drag_data_received(
 {
   TreeView::on_drag_data_received(context, x, y, selection_data, info, time);
 
-<<<<<<< HEAD
-  // 3.0 Gtk::SelectionData::get_uris() returns ustring vector
-=======
->>>>>>> master
   std::vector<Glib::ustring> uris = selection_data.get_uris();
 
   if (uris.empty()) return;
